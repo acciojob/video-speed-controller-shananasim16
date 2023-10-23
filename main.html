@@ -16,6 +16,29 @@
 
 <script  src="./script.js">
   //Your code goes here
+	// Get all the elements
+const video = document.querySelector('video');
+const speed = document.querySelector('.speed');
+const speedBar = document.querySelector('.speed-bar');
+
+// Add event listeners
+
+// Listen for mousemove on the speed element
+speed.addEventListener('mousemove', handleMove);
+
+// Implement the function to change playback speed
+
+function handleMove(e) {
+  const y = e.pageY - this.offsetTop;
+  const percent = y / this.offsetHeight;
+  const min = 0.4;
+  const max = 4;
+  const playbackRate = percent * (max - min) + min;
+
+  speedBar.textContent = `${playbackRate.toFixed(2)}x`;
+  video.playbackRate = playbackRate;
+}
+
 </script>
 </body>
 </html>
